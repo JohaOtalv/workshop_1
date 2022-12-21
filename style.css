@@ -1,5 +1,5 @@
 header {
-    background-color: #ff0202;
+    background-color: #0e9b7cc7;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -27,8 +27,14 @@ header {
     width: 80%;
 }
 
+.nav-item{
+    
+    padding: 20px;
+}
+.button-nav{
+    border-radius: 7px;
 
-
+}
 li i {
     padding: 0 1vw;
 }
