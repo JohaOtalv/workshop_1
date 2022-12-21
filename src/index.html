@@ -5,11 +5,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/1a58ad0bca.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../style.css">
 </head>
-
 <body>
-    <h1>holiii worksop</h1>
+        <header>
+            <div>
+                <p>comfort and elegance,<span><strong><u>Buy now!</u></strong></span></p>
+            </div>
+            <div id="header2">
+                <i class="fa-solid fa-flag-usa"></i>
+                <p>English</p>
+                <p>USD</p>
+            </div>
+        </header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="logo"><img src="../img/logo.png" height="42px"></a>
+                <div class="navbar-collapse" id="navbarSupportedContent">
+                    <form id="searchs" class="d-flex" role="search">
+                        <button id="gps" class="btn"><i class="fa-solid fa-location-dot"></i>
+                        </button>
+                        <div class="input-group">
+                            <form>
+                                <input type="text" class="form-control" placeholder="I'm searching for..."
+                                    aria-label="Recipient's username" id="search">
+                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i
+                                        class="fa-solid fa-magnifying-glass"></i></button>
+                            </form>
+                        </div>
+                    </form>
+                    <ul id="nav-ul" class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#"><i
+                                    class="fa-solid fa-phone-volume"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active border-start border-end"><i class="fa-regular fa-heart"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active border-end position-relative" aria-current="page" href="shoppingCart.html"><i
+                                    class="fa-solid fa-cart-shopping"></i><span
+                                    class="notification position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    0</span></a>
+    
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
 </body>
 
 </html>

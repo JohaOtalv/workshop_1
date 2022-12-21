@@ -1,0 +1,50 @@
+header {
+    background-color: #ff0202;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    font-size: small;
+    padding: 0em 3em;
+}
+
+#header2 {
+    display: flex;
+    flex-direction: row;
+}
+
+#header2 p {
+    background-color: #eb1818;
+    color: white;
+}
+
+#gps {
+    margin-right: 1em;
+    height: max-content;
+    border: 0.1px solid rgba(128, 128, 128, 0.262);
+}
+
+#searchs {
+    width: 80%;
+}
+
+
+
+li i {
+    padding: 0 1vw;
+}
+
+#navbarSupportedContent {
+    display: flex;
+    flex-direction: row;
+}
+
+#nav-ul {
+    display: flex;
+    flex-direction: row;
+}
+
+#nav-ul a:hover {
+    background-color: #16987f;
+    color: #ffffff;
+    border-radius: 10px;
+}
