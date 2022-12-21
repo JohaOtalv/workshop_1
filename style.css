@@ -27,8 +27,14 @@ header {
     width: 80%;
 }
 
+.nav-item{
+    
+    padding: 20px;
+}
+.button-nav{
+    border-radius: 7px;
 
-
+}
 li i {
     padding: 0 1vw;
 }
