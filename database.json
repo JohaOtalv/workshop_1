@@ -1,12 +1,13 @@
 {
-    "maleProducts": [
+    "Products": [
         {
             "id": 1,
             "name": "Blue and Gray Boxers",
             "image": "https://fivestars.com.ec/tienda/1164-large_default/boxer-hombre.jpg",
             "price": 20000,
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "quantity": 1
+            "quantity": 1,
+            "type": "male"
         },
         {
             "id": 2,
@@ -14,7 +15,8 @@
             "image": "https://cdn.koaj.co/117303-thickbox_default/boxer-brief-estampado-bob-esponja.jpg",
             "price": 25000,
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "quantity": 1
+            "quantity": 1,
+            "type": "male"
         },
         {
             "id": 3,
@@ -22,7 +24,8 @@
             "image": "https://sc04.alicdn.com/kf/HTB1hjMQXRKw3KVjSZTEq6AuRpXag.jpg",
             "price": 24000,
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "quantity": 1
+            "quantity": 1,
+            "type": "male"
         },
         {
             "id": 4,
@@ -30,17 +33,17 @@
             "image": "https://www.celio.es/medias/sys_master/productMedias/productMediasImport/h39/hdf/10194064801822/star-wars-boxer-gris-1102845-1-zoom.jpg?frz-v=264",
             "price": 27000,
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "quantity": 1
-        }
-    ],
-    "femaleProducts": [
+            "quantity": 1,
+            "type": "male"
+        },
         {
             "id": 5,
             "name": "Invisible Underware",
             "image": "https://prochampions.vteximg.com.br/arquivos/ids/414913-700-700/Under-Armour-Ps-Hipster-3Pack-Ropa-Interior-3-Pack-REF-1325616-004-IMG-01.jpg?v=637648296032670000",
             "price": 35000,
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "quantity": 1
+            "quantity": 1,
+            "type": "female"
         },
         {
             "id": 6,
@@ -48,7 +51,8 @@
             "image": "https://i.pinimg.com/236x/c6/a3/4e/c6a34e3cbd17647f421e2111fec6f363.jpg",
             "price": 55000,
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "quantity": 1
+            "quantity": 1,
+            "type": "female"
         },
         {
             "id": 7,
@@ -56,7 +60,8 @@
             "image": "https://static.dafiti.com.co/p/lili-pink-5627-1731602-1-catalog-new.jpg",
             "price": 55000,
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "quantity": 1
+            "quantity": 1,
+            "type": "female"
         },
         {
             "id": 8,
@@ -64,7 +69,9 @@
             "image": "https://sc04.alicdn.com/kf/H60abeb828a334d2e92b42350a0d8f9d8D.jpg",
             "price": 27000,
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "quantity": 1
+            "quantity": 1,
+            "type": "female"
         }
     ]
+    
 }

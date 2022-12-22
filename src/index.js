@@ -1,13 +1,13 @@
 import './styles/style.css'
 import  logo from './img/logo.png';
-const API_URL_MALE = 'http://localhost:3000/maleProducts';
-const API_URL_FEMALE = 'http://localhost:3000/femaleProducts';
+const API_URL = 'http://localhost:3000/Products';
+
 
 let containerCards = document.querySelector('.container-cards');
 
 
 const getData = async (id) => {
-    const respuesta = await fetch(API_URL_MALE + "?id=" + id);
+    const respuesta = await fetch(API_URL + "?id=" + id);
     const datos = await respuesta.json();
     let objeto = datos[0]
     let cont = 0;
@@ -64,7 +64,7 @@ const loaderCards = async(API)=>{
     } catch (error) {
         
     }
+   
 }
 
-loaderCards(API_URL_MALE);
-loaderCards(API_URL_FEMALE);
+loaderCards(API_URL);
