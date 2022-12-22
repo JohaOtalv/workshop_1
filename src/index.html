@@ -12,6 +12,7 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1a58ad0bca.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
         <header>
@@ -59,6 +60,52 @@
                 </div>
             </div>
         </nav>
+
+        <div class="cards-carrito">
+            <div id="cart-image">
+                <img src="https://fivestars.com.ec/tienda/1164-large_default/boxer-hombre.jpg" alt="">
+            </div>
+
+            <div id="cart-desc">
+                <p>description</p>
+                <h5>Blue and Gray Boxers</h5>
+            </div>
+            <div id="cart-price">
+                <p>Price:</p>
+                <p>$20000</p>
+            </div>
+            <div id="cart-calc">
+                <button class="numSub" onclick ="numSub(${price},${id})">-</button>
+                <input class="idNum${id}" type="text">
+                <button class="numAdd" onclick="numAdd(${price},${id})">+</button>
+            </div>
+            <div id="cart-total">
+                <p>Total</p>
+                <p id="totalPrice${id}"></p>
+            </div>
+            <div id="cart-delete">
+                <button class="btn btn-danger" onclick="deleteProd(${id})"><i class="bi bi-trash">Eliminar</i></button>
+                <button>Guardar</button>
+            </div>
+        </div>
+        <div class="card">
+        <img src="https://cdn.koaj.co/117303-thickbox_default/boxer-brief-estampado-bob-esponja.jpg",
+         alt=">
+                <div class="card">
+                    <h5 class="card-title">${description}</h5>
+                    <p class="card-text">${category}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">${lot}gr</li>
+                    <li class="list-group-item">$${price}</li>
+                    <li class="list-group-item">Agregar a Favoritos <button onclick="addFavoritos(${id})">❤</button></li>
+                </ul>
+                <div class="card-body">
+                    <button onclick="agregarAlCarrito(${id})" class="card-link">Añadir al Carrito</button> <br>
+                    <button  class="card-link"><a  target="_blank" href="Carrito.html" </a>  Ver mi Carrito</button>
+                </div>
+            </div>
+
 </body>
 
 </html>
