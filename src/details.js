@@ -1,3 +1,4 @@
+import './styles/style.css'
 
 /* ----------------- FUNCTIONS  ---------------------*/
 

@@ -31,6 +31,19 @@ logo.addEventListener("click", event =>{
 window.location.href = "/index.html";
 })
 
+const filtrado = (_tag) => { /*  Filter showed cards */
+    containerCards.innerHTML = ``;
+    console.log("ENTRO PERRO");
+    if (_tag == 'men') {
+        loaderCards(API_URL + "?type=" + 'male');
+    }else if (_tag == 'women') {
+        loaderCards(API_URL + "?type=" + 'female');
+    }else{
+        loaderCards(API_URL);
+    }
+}
+window.filtrado = filtrado; /* Adding this function to GLOBAL SCOPE */
+
 const loaderCards = async (API) => { /* Load all cards in Collections */
     const respuesta = await fetch(API)
     const datos = await respuesta.json()
