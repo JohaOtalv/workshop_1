@@ -26,6 +26,11 @@ const irADetalles = (_object) => { /* EventListener to go details */
     window.location.href = "/details.html";
   }
 
+  const logo = document.querySelector(".logo") /* EventListener to go index on click logo */
+logo.addEventListener("click", event =>{
+window.location.href = "/index.html";
+})
+
 const loaderCards = async (API) => { /* Load all cards in Collections */
     const respuesta = await fetch(API)
     const datos = await respuesta.json()
