@@ -1,12 +1,10 @@
 import './styles/style.css'
-import logo from './img/logo.png';
-const API_URL = 'http://localhost:3000/Products';
-
-
+const API_URL = 'http://localhost:3000/Products'; /* JSON SERVER API */
 let containerCards = document.querySelector('.container-cards');
-
 let cart; 
-const addToCard = (_object) => {
+
+/* ----------------- FUNCTIONS  ---------------------*/
+const addToCard = (_object) => { /* Add item to cart */
     let res = localStorage.getItem('cart')
 
     console.log(res);
@@ -22,12 +20,13 @@ const addToCard = (_object) => {
     localStorage.setItem('cart', cartJson);
     console.log('add');
 }
-const irADetalles = (_object) => {
+
+const irADetalles = (_object) => { /* EventListener to go details */
     localStorage.setItem("detalles", JSON.stringify(_object));
     window.location.href = "/details.html";
   }
 
-const loaderCards = async (API) => {
+const loaderCards = async (API) => { /* Load all cards in Collections */
     const respuesta = await fetch(API)
     const datos = await respuesta.json()
     console.log(datos);
@@ -70,4 +69,4 @@ const loaderCards = async (API) => {
 
 }
 
-loaderCards(API_URL);
+loaderCards(API_URL); /* Call the function */
