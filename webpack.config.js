@@ -13,6 +13,7 @@ module.exports = {
 		open: true
 	},
 	module: {
+		
 		rules: [
 			{
 				test: /\.js$/,
@@ -24,6 +25,7 @@ module.exports = {
 					}
 				}
 			},
+			
 			{
 				test: /\.css$/,
 				use: ["style-loader", "css-loader"]
@@ -47,8 +49,16 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: 'workshop',
-			template: './src/index.html'
-		})
+			template: './src/index.html',
+			
+		}),
+			new HtmlWebpackPlugin({
+			  filename: 'details.html',
+			  template: 'src/details.html',
+			  
+			})
+		  
 	]
+	
 
 }

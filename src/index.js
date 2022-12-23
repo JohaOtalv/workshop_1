@@ -5,13 +5,6 @@ const API_URL = 'http://localhost:3000/Products';
 
 let containerCards = document.querySelector('.container-cards');
 
-
-// const getData = async (id) => {
-//     const respuesta = await fetch("http://localhost:3000/Products?id=" + id);
-//     const datos = await respuesta.json();
-//     let objeto = datos[0]
-//     return objeto;
-//   }
 let cart; 
 const addToCard = (_object) => {
     let res = localStorage.getItem('cart')
@@ -29,7 +22,10 @@ const addToCard = (_object) => {
     localStorage.setItem('cart', cartJson);
     console.log('add');
 }
-
+const irADetalles = (_object) => {
+    localStorage.setItem("detalles", JSON.stringify(_object));
+    window.location.href = "/details.html";
+  }
 
 const loaderCards = async (API) => {
     const respuesta = await fetch(API)
@@ -42,13 +38,17 @@ const loaderCards = async (API) => {
 
 
             const div = document.createElement('div');
-            div.setAttribute('class', 'card cartas');
+            div.setAttribute('class', ' card_cartas ');
             div.innerHTML = `
-        <img src="${element.image}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <h2> ${element.name}</h2>
-          <h5 class="card-title">$${element.price}</h5>
-          <a class="btn btn-primary" id="add${element.id}" >Add</a>
+             <div id="id${element.id}">
+            <div class="card_image">
+            <img src="${element.image}" class="card-img-top" alt="...">
+            </div>
+            <div class="card-body">
+            <h2> ${element.name}</h2>
+            <h5 class="card-title">$${element.price}</h5>
+            <a href="#" class="btn btn-primary" id="add${element.id}" >Add</a>
+            </div>
         `
             containerCards.appendChild(div);
             // funciones
@@ -56,7 +56,11 @@ const loaderCards = async (API) => {
             button.addEventListener('click', () => {
                 console.log('me undiste');
                 addToCard(element);
-
+            })
+            
+            const carta = document.getElementById('id'+ element.id)
+            carta.addEventListener('click', () =>{
+                irADetalles(element)
             })
         });
 
