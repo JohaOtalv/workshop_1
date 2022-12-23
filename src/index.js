@@ -1,34 +1,63 @@
 import './styles/style.css'
 const API_URL = 'http://localhost:3000/Products'; /* JSON SERVER API */
 let containerCards = document.querySelector('.container-cards');
-let cart; 
-
+let cart = [];
 /* ----------------- FUNCTIONS  ---------------------*/
+const addToListCart = () => { /* PROBANDOOOOOOOOOOOOOOOOO */
+console.log("ENTRO A LISTA");
+    let containerList = document.querySelector('.container-list');
+    let res = localStorage.getItem('cart')
+
+    if (res !== undefined) {
+        console.log("Bien o que LIST")
+        let cart = JSON.parse(res)
+        console.log(cart);
+        cart.forEach((e) =>{
+    containerList.innerHTML += `
+    <div class="details d-flex">
+    <img class="cart-image"
+        src="${e.image}"
+        alt="" style="width: 7rem">
+    <div>
+        <p class="product-title">${e.name}</p>
+        <p class="price">$125 x3 <span>$${e.price}</span> </p>
+    </div>
+    <img class="delete"
+        src="https://raw.githubusercontent.com/DiRenzoV/E-  commerce/f6f8ebfe79e3e9bf93d78692aba607a016556261/src/images/icon-delete.svg"
+        alt="delete">
+    </div>
+    `
+        })
+    }
+
+}
+
+
 const addToCard = (_object) => { /* Add item to cart */
     let res = localStorage.getItem('cart')
 
-    console.log(res);
     if (res == undefined || res == null) {
-         cart = []
+        cart = []
         let cartJson = JSON.stringify(cart)
         localStorage.setItem('cart', cartJson);
     } else {
-       let cart = JSON.parse(res)
+        let cart = JSON.parse(res)
     }
     cart.push(_object);
     let cartJson = JSON.stringify(cart)
     localStorage.setItem('cart', cartJson);
-    console.log('add');
+    console.log('Añadido');
+    addToListCart();
 }
 
 const irADetalles = (_object) => { /* EventListener to go details */
     localStorage.setItem("detalles", JSON.stringify(_object));
     window.location.href = "/details.html";
-  }
+}
 
-  const logo = document.querySelector(".logo") /* EventListener to go index on click logo */
-logo.addEventListener("click", event =>{
-window.location.href = "/index.html";
+const logo = document.querySelector(".logo") /* EventListener to go index on click logo */
+logo.addEventListener("click", event => {
+    window.location.href = "/index.html";
 })
 
 const filtrado = (_tag) => { /*  Filter showed cards */
@@ -36,9 +65,9 @@ const filtrado = (_tag) => { /*  Filter showed cards */
     console.log("ENTRO PERRO");
     if (_tag == 'men') {
         loaderCards(API_URL + "?type=" + 'male');
-    }else if (_tag == 'women') {
+    } else if (_tag == 'women') {
         loaderCards(API_URL + "?type=" + 'female');
-    }else{
+    } else {
         loaderCards(API_URL);
     }
 }
@@ -74,11 +103,11 @@ const loaderCards = async (API) => { /* Load all cards in Collections */
                 console.log('me undiste');
                 addToCard(element);
             })
-            
-            const carta = document.getElementById('id'+ element.id)
-            carta.addEventListener('click', () =>{
+
+/*             const carta = document.getElementById('id' + element.id)
+            carta.addEventListener('click', () => {
                 irADetalles(element)
-            })
+            }) */
         });
 
     } catch (error) {
