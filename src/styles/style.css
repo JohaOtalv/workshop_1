@@ -146,6 +146,10 @@ li i {
     background-color: var(--PaleOrange);
 }
 
+.img-avatar{
+    width: 35px;
+    height: 35px;
+}
 @media screen and (max-width: 650px) {
     .container-cards {
         display: grid;
