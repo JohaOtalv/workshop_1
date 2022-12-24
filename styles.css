@@ -1,0 +1,432 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap');
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0%;
+}
+
+* {
+    margin: 0px;
+    padding: 0%;
+}
+
+
+.language {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    justify-content: space-between;
+    background-color: #0baf9a;
+    color: white;
+}
+
+.language p {
+    width: 80%;
+}
+
+.language select {
+    border-color: #0baf9a;
+    background-color: #0baf9a;
+    color: white;
+}
+
+.language #currency {
+    margin-right: 7%;
+}
+
+.language #language {
+    margin-right: 0px;
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 8%;
+    padding-right: 5%;
+    justify-content: space-between;
+}
+
+.search #logo-location {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 30%;
+    gap: 10%;
+}
+
+.search #input-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 50%;
+    border-radius: 8px;
+}
+
+.search input {
+    height: 36px;
+    padding-left: 1%;
+    width: 80%;
+    border-radius: 8px;
+}
+
+.search button {
+    background-color: white;
+    border-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 5px 1px #0baf9a;
+    width: 20%;
+}
+
+.search #images {
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+    margin-left: 3%;
+}
+
+#shCart {
+    width: 60%;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    padding-left: 5%;
+    padding-right: 5%;
+    align-items: center;
+    gap: 2%;
+}
+
+
+nav button {
+    display: flex;
+    align-items: center;
+    background-color: #0baf9a;
+    padding: 5px;
+    color: white;
+    border-color: #0baf9a;
+    border-radius: 8px;
+    font-size: 20px;
+    width: 20%;
+    justify-content: center;
+}
+
+nav button #txt {
+    margin-right: 5%;
+}
+
+#nav-products {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5%;
+
+}
+
+#nav-products-index {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 20%;
+}
+
+.banner {
+    display: flex;
+    flex-direction: row;
+}
+
+#banner-img {
+    width: 50%;
+    border-radius: 15px;
+    padding: 5%;
+
+}
+
+#banner-img2 {
+    flex-direction: column;
+    width: 50%;
+    padding: 5%;
+    border-radius: 8px;
+}
+
+
+#banner-img img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+#banner-img2 img {
+    border-radius: 8px;
+    width: 100%;
+}
+
+#general-category {
+    width: 20%;
+    margin-left: 5%;
+    border-radius: 8px;
+    background-color: rgb(243, 235, 235);
+}
+
+#general-category p,
+h3 {
+    margin-left: 3%;
+    padding-bottom: 2%;
+}
+
+.general {
+    display: flex;
+    flex-direction: row;
+}
+
+main {
+    padding-left: 5%;
+    width: 70%;
+}
+
+.targets {
+
+    display: flex;
+    flex-direction: row;
+    gap: 20%;
+}
+
+.targets #plant {
+
+    width: 32px;
+
+}
+
+#reloj {
+    display: flex;
+    width: 200px;
+    height: 30px;
+    border: 1px solid rgb(227, 96, 96);
+    background-color: rgb(227, 96, 96);
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    margin-top: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    padding: 2%;
+
+}
+
+.footer-child {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    padding: 2%;
+}
+
+.footer-child #logo-footer {
+    margin-top: -12%;
+}
+
+.footer-child p {
+    margin-bottom: 3%;
+}
+
+.products {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    margin-bottom: 2%;
+    margin-right: 2%;
+
+}
+
+.card-linnk button:hover {
+    opacity: 10;
+
+}
+
+#boton-carrito {
+    position: relative;
+}
+
+#contadorCarrito {
+    background-color: rgb(241, 187, 85);
+    position: absolute;
+    bottom: 15px;
+    margin-left: 5px;
+    width: 24px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px 1px #0baf9a;
+    /* border: 2px solid #0baf9a; */
+}
+
+#idCarrito {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+}
+
+.cards-carrito {
+    display: flex;
+    width: 80%;
+    flex-direction: row;
+    padding: 3%;
+    margin: auto;
+    background-color: rgb(242, 241, 241);
+}
+
+#cart-desc {
+    display: flex;
+    flex-direction: column;
+    width: 16%;
+    justify-content: center;
+    align-items: left;
+    padding-left: 5%;
+}
+
+#cart-price {
+    display: flex;
+    flex-direction: column;
+    width: 16%;
+    justify-content: center;
+    align-items: left;
+    padding-left: 5%;
+}
+
+#cart-total {
+    display: flex;
+    flex-direction: column;
+    width: 16%;
+    justify-content: center;
+    align-items: left;
+    padding-left: 5%;
+}
+
+#cart-delete {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 16%;
+    padding: 2%;
+}
+
+#cart-image {
+    width: 16%;
+}
+
+#cart-calc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16%;
+    gap: 5%;
+}
+
+#cart-calc button {
+    border-radius: 100px 100px;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    align-items: center;
+}
+
+#cart-calc input {
+    width: 20%;
+    border: none;
+    background-color: rgb(242, 241, 241);
+    color: black;
+    text-align: center;
+}
+
+#cart-delete button {
+    height: 50%;
+    text-align: center;
+    width: 80%;
+    align-items: center;
+    margin-top: 5%;
+}
+
+#cart-image img {
+    width: 100%;
+}
+
+.generalAdmin {
+    display: flex;
+    justify-content: space-between;
+    padding: 2%;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 3%;
+}
+
+.card-body-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card-body-button button {
+    margin-top: 2%;
+    width: 45%;
+
+}
+
+.card-body-delete {
+    display: flex;
+    justify-content: center;
+    margin: 2%;
+}
+
+.card-body-delete button {
+    margin-top: 2%;
+    width: 80%;
+
+}
+
+.btn-create {
+    background-color: #0baf9a;
+    border-radius: 8px;
+    border: #0baf9a;
+    color: white;
+}
+
+.btn-modify {
+    background-color: #5766ed;
+    border-radius: 8px;
+    border: rgb(108, 105, 105);
+    color: white;
+    height: 50%;
+}
+
+.btn-delete {
+    background-color: #ed5757;
+    border-radius: 8px;
+    border: rgb(108, 105, 105);
+    color: white;
+    height: 50%;
+}
+
+.alert-success {
+    display: flex;
+    flex-direction: column;
+}
+
+.alert-success input {
+    margin-top: 2%;
+    border-radius: 5px;
+    border-color: #0baf9a;
+}
+
+#ptch {
+    margin-left: 5%;
+}
