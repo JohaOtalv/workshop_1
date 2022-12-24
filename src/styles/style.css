@@ -97,7 +97,7 @@ li i {
 }
 
 .cart-section {
-    /* display: none; */
+    display: none; 
     position: absolute;
     background-color: #a8cac3;
 }
