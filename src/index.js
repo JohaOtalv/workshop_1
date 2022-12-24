@@ -15,14 +15,16 @@ const addToListCart = () => {
         containerList.innerHTML = ``
         cart.forEach((e) => {
             containerList.innerHTML += `
-                <div class="details d-flex">
+                <div class="details d-flex align-items-center">
                  <img class="cart-image"src="${e.image}"alt="" style="width: 7rem; overflow-y: scroll;">
                     <div>
                       <p class="product-title">${e.name}</p>
-                      <p class="price">$125 x3 <span>$${e.price}</span> </p>
-                      <button class="numSub" onclick ="numSub(${e.price},${e.id})">-</button>
-                      <input class="idNum${e.id}" type="text">
-                      <button class="numAdd" onclick="numAdd(${e.price},${e.id})">+</button>
+                      <p class="price">$125 x3 <b>$${e.price}</b> </p>
+                      <div class="input-group">
+                        <button class="numSub btn btns-cart" onclick ="numSub(${e.price},${e.id})">-</button>
+                        <input class="idNum${e.id} form-control" type="number">
+                        <button class="numAdd btn btns-cart" onclick="numAdd(${e.price},${e.id})">+</button>
+                      </div>
                     </div>
                 <img class="delete" src="https://raw.githubusercontent.com/DiRenzoV/E-commerce/f6f8ebfe79e3e9bf93d78692aba607a016556261/src/images/icon-delete.svg"
                     alt="delete" onclick="eraseCartItem(${e.id})">
@@ -85,7 +87,7 @@ const notificationCart = () => {
     if (res != undefined || res != null) {
         let localParsed = JSON.parse(res)
         notification.innerText = localParsed.length
-    }else{
+    } else {
         notification.innerText = '0';
     }
 }
@@ -99,9 +101,9 @@ const eraseCartItem = (id) => {
     if (cart.some((product) => product.id === id)) {  //Esta condiciÃ³n compara si ya existe el elemento en el Local Storage
         localStorage.removeItem("cart") // Esto elimina todo del cartJSON
 
-/*         const toastLiveExample = document.getElementById('show-toast')
-        const toast = new bootstrap.Toast(toastLiveExample)
-        toast.show() */
+        /*         const toastLiveExample = document.getElementById('show-toast')
+                const toast = new bootstrap.Toast(toastLiveExample)
+                toast.show() */
 
         let filterCart = cart.filter((element) => {
             return element.id != id
@@ -133,7 +135,7 @@ logo.addEventListener("click", event => {
 })
 
 export const filtrado = (_tag) => { /*  Filter showed cards */
-/* window.location.href = "/index.html"; */
+    /* window.location.href = "/index.html"; */
     containerCards.innerHTML = ``;
     if (_tag == 'men') {
         loaderCards(API_URL + "?type=" + 'male');
