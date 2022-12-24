@@ -1,5 +1,6 @@
 import './styles/style.css'
 import './styles/styleDetails.css'
+import { filtrado } from "./index";
 
 /* ----------------- FUNCTIONS  ---------------------*/
 
@@ -7,6 +8,13 @@ const logo = document.querySelector(".logo") /* EventListener to go index on cli
 logo.addEventListener("click", event => {
   window.location.href = "/index.html";
 })
+
+const redirect = (tag) => {
+  window.location.href = "/index.html";
+  setTimeout( filtrado(tag),2000)
+}
+window.redirect = redirect; /* Adding this function to GLOBAL SCOPE */
+
 
 const mostrarDetalles = () => {
   let datos = JSON.parse(localStorage.getItem("detalles"))
@@ -43,12 +51,3 @@ const mostrarDetalles = () => {
 }
 mostrarDetalles(); /* Call the function */
 
-
-//------- MODAL BOOTSTRAP ------//
-
-const myModal = document.getElementById('myModal')
-const myInput = document.getElementById('myInput')
-
-myModal.addEventListener('shown.bs.modal', () => {
-  myInput.focus()
-})

@@ -8,12 +8,10 @@ let cart;
 
 /* - Function to add cart items */
 const addToListCart = () => {
-    console.log("ENTRO A LISTA");
     let containerList = document.querySelector('.container-list');
     let res = localStorage.getItem('cart')
     if (res != undefined || res != null) {
         let cart = JSON.parse(res)
-        console.log(cart);
         containerList.innerHTML = ``
         cart.forEach((e) => {
             containerList.innerHTML += `
@@ -27,7 +25,7 @@ const addToListCart = () => {
                       <button class="numAdd" onclick="numAdd(${e.price},${e.id})">+</button>
                     </div>
                 <img class="delete" src="https://raw.githubusercontent.com/DiRenzoV/E-commerce/f6f8ebfe79e3e9bf93d78692aba607a016556261/src/images/icon-delete.svg"
-                    alt="delete">
+                    alt="delete" onclick="eraseCartItem(${e.id})">
                 </div>
                 `
         })
@@ -61,7 +59,6 @@ const addToCard = (_object) => {
     cart.push(_object);
     let cartJson = JSON.stringify(cart)
     localStorage.setItem('cart', cartJson);
-    console.log('Añadido');
     /* CALL FUNCTIONS */
     addToListCart();
     notificationCart()
@@ -76,7 +73,6 @@ function numAdd(_price, _id) {
 window.numAdd = numAdd;
 function numSub(_price, _id) {
     if (numArr[_id - 1] > 0) {
-        console.log("SIISISIS");
         numArr[_id - 1] = numArr[_id - 1] - 1
         document.querySelector(`.idNum${_id}`).value = numArr[_id - 1]
     }
@@ -87,13 +83,38 @@ const notificationCart = () => {
     let res = localStorage.getItem('cart')
     let notification = document.querySelector(".notification")
     if (res != undefined || res != null) {
-        console.log("PAsa condicion");
         let localParsed = JSON.parse(res)
         notification.innerText = localParsed.length
     }else{
         notification.innerText = '0';
     }
 }
+const eraseCartItem = (id) => {
+    let localData = localStorage.getItem("cart")
+
+    cart = JSON.parse(localData) // Parseo para tenerlo listo en los if's inferiores
+    if (localData == undefined || localData == null) {
+        cart = []
+    }
+    if (cart.some((product) => product.id === id)) {  //Esta condiciÃ³n compara si ya existe el elemento en el Local Storage
+        localStorage.removeItem("cart") // Esto elimina todo del cartJSON
+
+/*         const toastLiveExample = document.getElementById('show-toast')
+        const toast = new bootstrap.Toast(toastLiveExample)
+        toast.show() */
+
+        let filterCart = cart.filter((element) => {
+            return element.id != id
+        })
+        console.log(filterCart)
+
+        let cartJSON = JSON.stringify(filterCart)
+        localStorage.setItem("cart", cartJSON)
+        notificationCart()
+    }
+    addToListCart();
+}
+window.eraseCartItem = eraseCartItem;
 
 /* ----  CALL FUNCTIONS */
 notificationCart()
@@ -111,13 +132,15 @@ logo.addEventListener("click", event => {
     window.location.href = "/index.html";
 })
 
-const filtrado = (_tag) => { /*  Filter showed cards */
+export const filtrado = (_tag) => { /*  Filter showed cards */
+/* window.location.href = "/index.html"; */
     containerCards.innerHTML = ``;
-    console.log("ENTRO PERRO");
     if (_tag == 'men') {
         loaderCards(API_URL + "?type=" + 'male');
+        console.log("MALE");
     } else if (_tag == 'women') {
         loaderCards(API_URL + "?type=" + 'female');
+        console.log("MALE");
     } else {
         loaderCards(API_URL);
     }
@@ -127,15 +150,14 @@ window.filtrado = filtrado; /* Adding this function to GLOBAL SCOPE */
 const loaderCards = async (API) => { /* Load all cards in Collections */
     const respuesta = await fetch(API)
     const datos = await respuesta.json()
-    console.log(datos);
 
     try {
-        containerCards.innerHTML += ``
+        containerCards.innerHTML = ``
         datos.forEach(element => {
 
 
             const div = document.createElement('div');
-            div.setAttribute('class', ' card_cartas ');
+            div.setAttribute('class', 'card_cartas');
             div.innerHTML = `
             <div id="id${element.id}">
                 <div class="card_image">
@@ -146,7 +168,7 @@ const loaderCards = async (API) => { /* Load all cards in Collections */
                     <h5 class="card-title">$${element.price}</h5>
                 </div>
             </div>
-            <a href="#" class="btn btn-primary" id="add${element.id}" >Add</a>
+            <a href="#" class="btn btn-primary btn-add" id="add${element.id}" >Add</a>
 
         `
             containerCards.appendChild(div);
@@ -154,7 +176,6 @@ const loaderCards = async (API) => { /* Load all cards in Collections */
             /* Click on add Product */
             const button = document.getElementById('add' + element.id);
             button.addEventListener('click', () => {
-                console.log('me undiste');
                 addToCard(element);
             })
             /* Click for go to details */
@@ -168,7 +189,6 @@ const loaderCards = async (API) => { /* Load all cards in Collections */
 
     }
 }
-
 loaderCards(API_URL); /* Call the function */
 
 
