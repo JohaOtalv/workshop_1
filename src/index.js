@@ -15,7 +15,7 @@ const addToListCart = () => {
         containerList.innerHTML = ``
         cart.forEach((e) => {
             containerList.innerHTML += `
-                <div class="details d-flex align-items-center">
+                <div class="details d-flex align-items-center efecto">
                  <img class="cart-image"src="${e.image}"alt="" style="width: 7rem; overflow-y: scroll;">
                     <div>
                       <p class="product-title">${e.name}</p>
@@ -36,14 +36,28 @@ const addToListCart = () => {
 }
 
 /* ----------------------- Adding effect show and hide to Modal ---------  */
+let efecto = document.querySelector(".efecto")
 let cartSection = document.querySelector(".cart-section")
 let cartBtn = document.querySelector("#cart-button")
-cartBtn.addEventListener("mouseover", () => {
-    cartSection.style.display = "block"
-    document.body.addEventListener('click', () => {
-        cartSection.style.display = "none"
-    });
+let status = true;
+
+const showCart = ()=>{
+    console.log("Entro a funcion");
+    if (status){
+        cartSection.style.display = "block";
+        status =!status
+
+    } else{
+        cartSection.style.display = "none";
+        status =!status
+    }
+}
+
+cartBtn.addEventListener("click", ()=>{
+    showCart()
 })
+
+
 
 
 
@@ -67,7 +81,11 @@ const addToCard = (_object) => {
 }
 
 let numArr = [0, 0, 0, 0, 0, 0, 0, 0]
+let numArrJSON = JSON.stringify(numArr);
+localStorage.setItem('arrayCantidadProductos',numArrJSON)
+
 function numAdd(_price, _id) {
+    let array = localStorage.getItem('arrayCantidadProductos')
     numArr[_id - 1] = numArr[_id - 1] + 1
     document.querySelector(`.idNum${_id}`).value = numArr[_id - 1]
 
