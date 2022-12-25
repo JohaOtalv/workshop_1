@@ -17,12 +17,23 @@
     --DarkGrayishBlue: hsl(219, 9%, 45%);
 }
 
+
 body {
     background-color: var(--LightGrayishBlue);
 }
 
-.nav-item {
+/* -------------- NAVBAR --------------- */
 
+.logo{
+    width: 150px;
+    padding-left: 10px;
+}
+
+.logo img{
+    width: 100%;
+}
+.nav-item {
+    list-style: none;
     padding: 20px;
 }
 
@@ -30,10 +41,10 @@ li i {
     padding: 0 1vw;
 }
 
-#navbarSupportedContent {
+/* #navbarSupportedContent {
     display: flex;
     flex-direction: row;
-}
+} */
 
 #nav-ul {
     display: flex;
@@ -50,12 +61,25 @@ li i {
     cursor: pointer;
 }
 
+#cart-button{
+    gap: 40px;
+}
+
 #cart-button:hover {
     background-color: var(--Orange);
     color: white;
 }
 
+.img-avatar {
+    width: 35px;
+    height: 35px;
+}
 
+
+
+
+
+/* -------------- CONTAINER CARDS ----------- */
 
 .container-cards {
     display: grid;
@@ -180,10 +204,7 @@ li i {
     background-color: var(--PaleOrange);
 }
 
-.img-avatar {
-    width: 35px;
-    height: 35px;
-}
+
 
 @media screen and (max-width: 650px) {
     .container-cards {
