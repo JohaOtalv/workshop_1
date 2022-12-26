@@ -2,7 +2,6 @@ import './styles/style.scss'
 import './styles/styleDetails.scss'
 import { filtrado } from "./index";
 import * as bootstrap from 'bootstrap'
-
 /* ----------------- FUNCTIONS  ---------------------*/
 
 const logo = document.querySelector(".logo") /* EventListener to go index on click logo */

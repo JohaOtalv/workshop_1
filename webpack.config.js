@@ -14,11 +14,12 @@ module.exports = {
 	},
 	output: {
 		filename: '[name].bundle.js',
-		path: path.resolve(__dirname, './build')
+		path: path.resolve(__dirname, 'dist')
 	},
 	devServer: {
 		open: true
 	},
+	devtool:"eval-source-map",
 	module: {
 		
 		rules: [
@@ -33,12 +34,12 @@ module.exports = {
 				}
 			},
 			{
-				test: /\.css$/,
-				use: ["style-loader", "css-loader"]
-			},
-			{
 				test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
 				type: 'asset/resource',
+			},
+			{
+				test: /\.css$/,
+				use: ["style-loader", "css-loader"]
 			},
 			{
 				test: /\.s[ac]ss$/,
@@ -49,7 +50,7 @@ module.exports = {
 					'sass-loader',
 					'postcss-loader'
 				]
-			},       
+			}  
 		]
 	},
 

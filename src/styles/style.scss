@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
-@import "~/node_modules/bootstrap/scss/bootstrap"; 
+@import "~bootstrap/scss/bootstrap";
+
 * {
     margin: 0;
     padding: 0;
@@ -86,6 +87,9 @@ li i {
     grid-template-columns: auto auto auto auto;
     gap: 20px;
     padding: 50px;
+/*     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap; */
 }
 
 .card_cartas {
@@ -204,6 +208,12 @@ li i {
     background-color: var(--PaleOrange);
 }
 
+.toast{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    float: right;
+}
 
 
 @media screen and (max-width: 650px) {

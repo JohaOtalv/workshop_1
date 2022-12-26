@@ -1,5 +1,5 @@
 import './styles/style.scss';
-import * as bootstrap from 'bootstrap'
+import * as bootstrap from 'bootstrap';
 const API_URL = 'http://localhost:3000/Products'; /* JSON SERVER API */
 let containerCards = document.querySelector('.container-cards');
 let cart;
@@ -39,7 +39,7 @@ const loaderCards = async (API) => { /* Load all cards in Collections */
             button.addEventListener('click', () => {
                 element.cantidadComprar = 0;
                 addToCart(element);
-                
+
             })
             /* Click for go to details */
             const carta = document.getElementById('id' + element.id)
@@ -80,7 +80,7 @@ const showCartOnModal = () => { /* Load Cart Items on modal */
                         alt="delete" onclick="eraseCartItem(${e.id})">
                     </div>
                     `
-                    containerList.appendChild(div);
+                containerList.appendChild(div);
                 // Funciones
                 /* Click on add Product */
                 const buttonAdd = document.getElementById('btnAdd' + e.id);
@@ -89,14 +89,14 @@ const showCartOnModal = () => { /* Load Cart Items on modal */
                     addToCart(e);
                 })
 
-                const buttonSub = document.getElementById('btnSub'+e.id)
-                buttonSub.addEventListener('click',() =>{
+                const buttonSub = document.getElementById('btnSub' + e.id)
+                buttonSub.addEventListener('click', () => {
                     console.log("HOLIIII");
                 })
             });
         }
     } catch (error) {
-        
+
     }
 }
 
@@ -141,11 +141,11 @@ const addToCart = (_object) => { /* VA A DEJAR DE FUNCIONAR */
             /* SI ENCUENTRA ESTE ID EN EL CARRITO SOLO LE AÑADE 1 */
             if (e.id == _object.id) {
                 flag = true
-                e.cantidadComprar ++;
+                e.cantidadComprar++;
             }
         })
         /* SI HAY CARRITO PERO NO ESTA AÑADIDO ESTE ID LO AÑADE POR PRIMERA VEZ */
-        if(!flag){
+        if (!flag) {
             _object.cantidadComprar = 1;
             console.log("NO estaba el id añadi 1");
             cart.push(_object)
@@ -155,9 +155,9 @@ const addToCart = (_object) => { /* VA A DEJAR DE FUNCIONAR */
     localStorage.setItem('cart', cartJson);
 
     /* CALL FUNCTIONS */
-     showCartOnModal();
-  /*   notificationCart();
-    numAdd(); */ 
+    showCartOnModal();
+    /*   notificationCart();
+      numAdd(); */
 }
 window.addToCart = addToCart;
 /* ---------------   Add an Remove from Cart with LocalStorage --------- */
@@ -171,9 +171,9 @@ const eraseCartItem = (id) => {
     if (cart.some((product) => product.id === id)) {  //Esta condiciÃ³n compara si ya existe el elemento en el Local Storage
         localStorage.removeItem("cart") // Esto elimina todo del cartJSON
 
-                 const toastLiveExample = document.getElementById('show-toast')
-                const toast = new bootstrap.Toast(toastLiveExample)
-                toast.show() 
+        const toastLiveExample = document.getElementById('show-toast')
+        const toast = new bootstrap.Toast(toastLiveExample)
+        toast.show()
 
         let filterCart = cart.filter((element) => {
             return element.id != id
