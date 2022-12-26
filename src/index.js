@@ -1,4 +1,5 @@
-import './styles/style.css'
+import './styles/style.scss';
+import * as bootstrap from 'bootstrap'
 const API_URL = 'http://localhost:3000/Products'; /* JSON SERVER API */
 let containerCards = document.querySelector('.container-cards');
 let cart;
@@ -165,17 +166,14 @@ window.addToCart = addToCart;
 
 const eraseCartItem = (id) => {
     let localData = localStorage.getItem("cart")
-
     cart = JSON.parse(localData) // Parseo para tenerlo listo en los if's inferiores
-    if (localData == undefined || localData == null) {
-        cart = []
-    }
+
     if (cart.some((product) => product.id === id)) {  //Esta condiciÃ³n compara si ya existe el elemento en el Local Storage
         localStorage.removeItem("cart") // Esto elimina todo del cartJSON
 
-        /*         const toastLiveExample = document.getElementById('show-toast')
+                 const toastLiveExample = document.getElementById('show-toast')
                 const toast = new bootstrap.Toast(toastLiveExample)
-                toast.show() */
+                toast.show() 
 
         let filterCart = cart.filter((element) => {
             return element.id != id

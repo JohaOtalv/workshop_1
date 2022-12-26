@@ -1,6 +1,7 @@
-import './styles/style.css'
-import './styles/styleDetails.css'
+import './styles/style.scss'
+import './styles/styleDetails.scss'
 import { filtrado } from "./index";
+import * as bootstrap from 'bootstrap'
 
 /* ----------------- FUNCTIONS  ---------------------*/
 
