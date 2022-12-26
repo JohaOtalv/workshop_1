@@ -115,12 +115,21 @@ const addToCard = (_object) => {
     localStorage.setItem('cart', cartJson);
     /* CALL FUNCTIONS */
     addToListCart();
-    notificationCart()
+    notificationCart();
+    numAdd();
 }
 /* ---------------   Add an Remove from Cart with LocalStorage --------- */
-let numArr = [0, 0, 0, 0, 0, 0, 0, 0]
-let numArrJSON = JSON.stringify(numArr);
-localStorage.setItem('arrayCantidadProductos',numArrJSON)
+
+const createArrayCart = () => {
+    let res = localStorage.getItem('arrayCantidadProductos')
+
+    if (res == undefined || res == null) {
+        let numArr = [0, 0, 0, 0, 0, 0, 0, 0]
+        let numArrJSON = JSON.stringify(numArr);
+        localStorage.setItem('arrayCantidadProductos',numArrJSON)
+    }
+
+}
 
 function numAdd(_price, _id) {
     let array = localStorage.getItem('arrayCantidadProductos')
