@@ -28,7 +28,7 @@ const mostrarDetalles = () => {
                 <div class="text-container">
                 <h1 class="card-text">${name}</h3>
                 <p>${description}</p>
-                <h3 class="price">${"Price: $" + price + " USD"}</h3>
+                <h3 class="price">${"Price: $" + price}</h3>
               </div>
         `;
   contenedorTexto.appendChild(divTexto);
@@ -48,6 +48,12 @@ const mostrarDetalles = () => {
               </section>
         `;
   contenedorImagen.appendChild(divImage);
+
+  const modal = document.querySelector(".modal-body");
+  modal.innerHTML = `
+  <img class="img-modal" src="${image}"
+  alt="">
+  `
 }
 mostrarDetalles(); /* Call the function */
 

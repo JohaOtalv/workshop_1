@@ -7,33 +7,6 @@ let cart;
 /* *******************  CART FUNCTIONS***************** */
 
 /* - Function to add cart items */
-const addToListCart = () => {
-    let containerList = document.querySelector('.container-list');
-    let res = localStorage.getItem('cart')
-    if (res != undefined || res != null) {
-        let cart = JSON.parse(res)
-        containerList.innerHTML = ``
-        cart.forEach((e) => {
-            containerList.innerHTML += `
-                <div class="details d-flex align-items-center efecto">
-                 <img class="cart-image"src="${e.image}"alt="" style="width: 7rem; overflow-y: scroll;">
-                    <div>
-                      <p class="product-title">${e.name}</p>
-                      <p class="price">$125 x3 <b>$${e.price}</b> </p>
-                      <div class="input-group">
-                        <button class="numSub btn btns-cart" onclick ="numSub(${e.price},${e.id})">-</button>
-                        <input class="idNum${e.id} form-control" type="number">
-                        <button class="numAdd btn btns-cart" onclick="numAdd(${e.price},${e.id})">+</button>
-                      </div>
-                    </div>
-                <img class="delete" src="https://raw.githubusercontent.com/DiRenzoV/E-commerce/f6f8ebfe79e3e9bf93d78692aba607a016556261/src/images/icon-delete.svg"
-                    alt="delete" onclick="eraseCartItem(${e.id})">
-                </div>
-                `
-        })
-    }
-
-}
 const loaderCards = async (API) => { /* Load all cards in Collections */
     const respuesta = await fetch(API)
     const datos = await respuesta.json()
@@ -59,15 +32,18 @@ const loaderCards = async (API) => { /* Load all cards in Collections */
 
         `
             containerCards.appendChild(div);
-            // funciones
+            // Funciones
             /* Click on add Product */
             const button = document.getElementById('add' + element.id);
             button.addEventListener('click', () => {
-                addToCard(element);
+                element.cantidadComprar = 0;
+                addToCart(element);
+                
             })
             /* Click for go to details */
             const carta = document.getElementById('id' + element.id)
             carta.addEventListener('click', () => {
+                element.cantidadComprar = 0;
                 irADetalles(element)
             })
         });
@@ -76,68 +52,116 @@ const loaderCards = async (API) => { /* Load all cards in Collections */
 
     }
 }
+const showCartOnModal = () => { /* Load Cart Items on modal */
+    let containerList = document.querySelector('.container-list');
+    let res = localStorage.getItem('cart')
+    try {
+        if (res != undefined || res != null) {
+            let cart = JSON.parse(res)
+            containerList.innerHTML = ``
+            cart.forEach((e) => {
+
+                const div = document.createElement('div');
+                div.setAttribute('class', 'details d-flex align-items-center efecto');
+                div.innerHTML = `
+                    <div class="details d-flex align-items-center efecto">
+                     <img class="cart-image"src="${e.image}"alt="" style="width: 7rem; overflow-y: scroll;">
+                        <div>
+                          <p class="product-title">${e.name}</p>
+                          <p class="price"><b>$${e.price}</b> x${e.cantidadComprar} </p>
+                          <div class="input-group">
+                            <button id="btnSub${e.id}" class="numSub btn btns-cart">-</button>
+                            <input class="idNum${e.id} form-control" type="number" value="${e.cantidadComprar}" readonly>
+                            <button id="btnAdd${e.id}" class="numAdd btn btns-cart">+</button>
+                          </div>
+                        </div>
+                    <img class="delete" src="https://raw.githubusercontent.com/DiRenzoV/E-commerce/f6f8ebfe79e3e9bf93d78692aba607a016556261/src/images/icon-delete.svg"
+                        alt="delete" onclick="eraseCartItem(${e.id})">
+                    </div>
+                    `
+                    containerList.appendChild(div);
+                // Funciones
+                /* Click on add Product */
+                const buttonAdd = document.getElementById('btnAdd' + e.id);
+                buttonAdd.addEventListener('click', () => {
+                    console.log("me ejecuto");
+                    addToCart(e);
+                })
+
+                const buttonSub = document.getElementById('btnSub'+e.id)
+                buttonSub.addEventListener('click',() =>{
+                    console.log("HOLIIII");
+                })
+            });
+        }
+    } catch (error) {
+        
+    }
+}
+
 /* ----------------------- Adding effect show and hide to Modal ---------  */
 let efecto = document.querySelector(".efecto")
 let cartSection = document.querySelector(".cart-section")
 let cartBtn = document.querySelector("#cart-button")
 let status = true;
 
-/* ---------- Show modal when click in Cart Icon */
-const showCart = ()=>{
-    console.log("Entro a funcion");
-    if (status){
+/* ---------- Change modal display when click in Cart Icon */
+const handleModalDisplay = () => {
+    if (status) {
         cartSection.style.display = "block";
-        status =!status
+        status = !status
 
-    } else{
+    } else {
         cartSection.style.display = "none";
-        status =!status
+        status = !status
     }
 }
 /* ---------- AddEventListener when touch cart Icon */
-cartBtn.addEventListener("click", ()=>{
-    showCart()
+cartBtn.addEventListener("click", () => {
+    handleModalDisplay()
 })
 
 /* --------------------------------------------------- */
 
 /*  on click add -> LocalStorage the items */
-const addToCard = (_object) => {
+const addToCart = (_object) => { /* VA A DEJAR DE FUNCIONAR */
     let res = localStorage.getItem('cart')
 
-    if (res == undefined || res == null) {
+    if (res == undefined || res == null) {/* NO ENCONTRO CART EN LS */
         cart = []
-    } else {
+        _object.cantidadComprar = 1
+        cart.push(_object);
+
+    } else { /*  SI ECONTRO CART EN EL LOCAL STORAGE */
         cart = JSON.parse(res)
+        let flag = false;
+        /* RECORRO CART BUSCANDO ID */
+        cart.forEach((e) => {
+            /* SI ENCUENTRA ESTE ID EN EL CARRITO SOLO LE AÑADE 1 */
+            if (e.id == _object.id) {
+                flag = true
+                e.cantidadComprar ++;
+            }
+        })
+        /* SI HAY CARRITO PERO NO ESTA AÑADIDO ESTE ID LO AÑADE POR PRIMERA VEZ */
+        if(!flag){
+            _object.cantidadComprar = 1;
+            console.log("NO estaba el id añadi 1");
+            cart.push(_object)
+        }
     }
-    cart.push(_object);
     let cartJson = JSON.stringify(cart)
     localStorage.setItem('cart', cartJson);
+
     /* CALL FUNCTIONS */
-    addToListCart();
-    notificationCart();
-    numAdd();
+     showCartOnModal();
+  /*   notificationCart();
+    numAdd(); */ 
 }
+window.addToCart = addToCart;
 /* ---------------   Add an Remove from Cart with LocalStorage --------- */
 
-const createArrayCart = () => {
-    let res = localStorage.getItem('arrayCantidadProductos')
 
-    if (res == undefined || res == null) {
-        let numArr = [0, 0, 0, 0, 0, 0, 0, 0]
-        let numArrJSON = JSON.stringify(numArr);
-        localStorage.setItem('arrayCantidadProductos',numArrJSON)
-    }
-
-}
-
-function numAdd(_price, _id) {
-    let array = localStorage.getItem('arrayCantidadProductos')
-    numArr[_id - 1] = numArr[_id - 1] + 1
-    document.querySelector(`.idNum${_id}`).value = numArr[_id - 1]
-
-}
-window.numAdd = numAdd; /* Adding this function to global scope */
 
 const eraseCartItem = (id) => {
     let localData = localStorage.getItem("cart")
@@ -162,7 +186,7 @@ const eraseCartItem = (id) => {
         localStorage.setItem("cart", cartJSON)
         notificationCart()
     }
-    addToListCart();
+    showCartOnModal();
 }
 window.eraseCartItem = eraseCartItem;
 
@@ -218,7 +242,7 @@ window.filtrado = filtrado; /* Adding this function to GLOBAL SCOPE */
 
 /* ----  CALL FUNCTIONS at the beginning */
 notificationCart()
-addToListCart(); /* Call the function for show cart list items on start */
+showCartOnModal(); /* Call the function for show cart list items on start */
 loaderCards(API_URL); /* Call the function */
 
 
