@@ -34,139 +34,6 @@ const addToListCart = () => {
     }
 
 }
-
-/* ----------------------- Adding effect show and hide to Modal ---------  */
-let efecto = document.querySelector(".efecto")
-let cartSection = document.querySelector(".cart-section")
-let cartBtn = document.querySelector("#cart-button")
-let status = true;
-
-const showCart = ()=>{
-    console.log("Entro a funcion");
-    if (status){
-        cartSection.style.display = "block";
-        status =!status
-
-    } else{
-        cartSection.style.display = "none";
-        status =!status
-    }
-}
-
-cartBtn.addEventListener("click", ()=>{
-    showCart()
-})
-
-
-
-
-
-/* --------------------------------------------------- */
-
-/*  When click the card button add to LocalStorage items */
-const addToCard = (_object) => {
-    let res = localStorage.getItem('cart')
-
-    if (res == undefined || res == null) {
-        cart = []
-    } else {
-        cart = JSON.parse(res)
-    }
-    cart.push(_object);
-    let cartJson = JSON.stringify(cart)
-    localStorage.setItem('cart', cartJson);
-    /* CALL FUNCTIONS */
-    addToListCart();
-    notificationCart()
-}
-
-let numArr = [0, 0, 0, 0, 0, 0, 0, 0]
-let numArrJSON = JSON.stringify(numArr);
-localStorage.setItem('arrayCantidadProductos',numArrJSON)
-
-function numAdd(_price, _id) {
-    let array = localStorage.getItem('arrayCantidadProductos')
-    numArr[_id - 1] = numArr[_id - 1] + 1
-    document.querySelector(`.idNum${_id}`).value = numArr[_id - 1]
-
-}
-window.numAdd = numAdd;
-function numSub(_price, _id) {
-    if (numArr[_id - 1] > 0) {
-        numArr[_id - 1] = numArr[_id - 1] - 1
-        document.querySelector(`.idNum${_id}`).value = numArr[_id - 1]
-    }
-}
-window.numSub = numSub;
-
-const notificationCart = () => {
-    let res = localStorage.getItem('cart')
-    let notification = document.querySelector(".notification")
-    if (res != undefined || res != null) {
-        let localParsed = JSON.parse(res)
-        notification.innerText = localParsed.length
-    } else {
-        notification.innerText = '0';
-    }
-}
-const eraseCartItem = (id) => {
-    let localData = localStorage.getItem("cart")
-
-    cart = JSON.parse(localData) // Parseo para tenerlo listo en los if's inferiores
-    if (localData == undefined || localData == null) {
-        cart = []
-    }
-    if (cart.some((product) => product.id === id)) {  //Esta condiciÃ³n compara si ya existe el elemento en el Local Storage
-        localStorage.removeItem("cart") // Esto elimina todo del cartJSON
-
-        /*         const toastLiveExample = document.getElementById('show-toast')
-                const toast = new bootstrap.Toast(toastLiveExample)
-                toast.show() */
-
-        let filterCart = cart.filter((element) => {
-            return element.id != id
-        })
-        console.log(filterCart)
-
-        let cartJSON = JSON.stringify(filterCart)
-        localStorage.setItem("cart", cartJSON)
-        notificationCart()
-    }
-    addToListCart();
-}
-window.eraseCartItem = eraseCartItem;
-
-/* ----  CALL FUNCTIONS */
-notificationCart()
-addToListCart(); /* Call the function for show cart list items on start */
-/* ******************* END CART FUNCTIONS***************** */
-
-
-const irADetalles = (_object) => { /* EventListener to go details */
-    localStorage.setItem("detalles", JSON.stringify(_object));
-    window.location.href = "/details.html";
-}
-
-const logo = document.querySelector(".logo") /* EventListener to go index on click logo */
-logo.addEventListener("click", event => {
-    window.location.href = "/index.html";
-})
-
-export const filtrado = (_tag) => { /*  Filter showed cards */
-    /* window.location.href = "/index.html"; */
-    containerCards.innerHTML = ``;
-    if (_tag == 'men') {
-        loaderCards(API_URL + "?type=" + 'male');
-        console.log("MALE");
-    } else if (_tag == 'women') {
-        loaderCards(API_URL + "?type=" + 'female');
-        console.log("MALE");
-    } else {
-        loaderCards(API_URL);
-    }
-}
-window.filtrado = filtrado; /* Adding this function to GLOBAL SCOPE */
-
 const loaderCards = async (API) => { /* Load all cards in Collections */
     const respuesta = await fetch(API)
     const datos = await respuesta.json()
@@ -209,6 +76,140 @@ const loaderCards = async (API) => { /* Load all cards in Collections */
 
     }
 }
+/* ----------------------- Adding effect show and hide to Modal ---------  */
+let efecto = document.querySelector(".efecto")
+let cartSection = document.querySelector(".cart-section")
+let cartBtn = document.querySelector("#cart-button")
+let status = true;
+
+/* ---------- Show modal when click in Cart Icon */
+const showCart = ()=>{
+    console.log("Entro a funcion");
+    if (status){
+        cartSection.style.display = "block";
+        status =!status
+
+    } else{
+        cartSection.style.display = "none";
+        status =!status
+    }
+}
+/* ---------- AddEventListener when touch cart Icon */
+cartBtn.addEventListener("click", ()=>{
+    showCart()
+})
+
+/* --------------------------------------------------- */
+
+/*  on click add -> LocalStorage the items */
+const addToCard = (_object) => {
+    let res = localStorage.getItem('cart')
+
+    if (res == undefined || res == null) {
+        cart = []
+    } else {
+        cart = JSON.parse(res)
+    }
+    cart.push(_object);
+    let cartJson = JSON.stringify(cart)
+    localStorage.setItem('cart', cartJson);
+    /* CALL FUNCTIONS */
+    addToListCart();
+    notificationCart()
+}
+/* ---------------   Add an Remove from Cart with LocalStorage --------- */
+let numArr = [0, 0, 0, 0, 0, 0, 0, 0]
+let numArrJSON = JSON.stringify(numArr);
+localStorage.setItem('arrayCantidadProductos',numArrJSON)
+
+function numAdd(_price, _id) {
+    let array = localStorage.getItem('arrayCantidadProductos')
+    numArr[_id - 1] = numArr[_id - 1] + 1
+    document.querySelector(`.idNum${_id}`).value = numArr[_id - 1]
+
+}
+window.numAdd = numAdd; /* Adding this function to global scope */
+
+const eraseCartItem = (id) => {
+    let localData = localStorage.getItem("cart")
+
+    cart = JSON.parse(localData) // Parseo para tenerlo listo en los if's inferiores
+    if (localData == undefined || localData == null) {
+        cart = []
+    }
+    if (cart.some((product) => product.id === id)) {  //Esta condiciÃ³n compara si ya existe el elemento en el Local Storage
+        localStorage.removeItem("cart") // Esto elimina todo del cartJSON
+
+        /*         const toastLiveExample = document.getElementById('show-toast')
+                const toast = new bootstrap.Toast(toastLiveExample)
+                toast.show() */
+
+        let filterCart = cart.filter((element) => {
+            return element.id != id
+        })
+        console.log(filterCart)
+
+        let cartJSON = JSON.stringify(filterCart)
+        localStorage.setItem("cart", cartJSON)
+        notificationCart()
+    }
+    addToListCart();
+}
+window.eraseCartItem = eraseCartItem;
+
+function numSub(_price, _id) {
+    if (numArr[_id - 1] > 0) {
+        numArr[_id - 1] = numArr[_id - 1] - 1
+        document.querySelector(`.idNum${_id}`).value = numArr[_id - 1]
+    }
+}
+window.numSub = numSub; /* Adding this function to global scope */
+
+/* -------------  Notification pop up ------------ */
+const notificationCart = () => {
+    let res = localStorage.getItem('cart')
+    let notification = document.querySelector(".notification")
+    if (res != undefined || res != null) {
+        let localParsed = JSON.parse(res)
+        notification.innerText = localParsed.length
+    } else {
+        notification.innerText = '0';
+    }
+}
+
+/* ******************* END CART FUNCTIONS***************** */
+
+/* ----------- Go details ------------- */
+const irADetalles = (_object) => { /* EventListener to go details */
+    localStorage.setItem("detalles", JSON.stringify(_object));
+    window.location.href = "/details.html";
+}
+
+/*  ---------- Click on logo -> index.html ----------- */
+const logo = document.querySelector(".logo") /* EventListener to go index on click logo */
+logo.addEventListener("click", event => {
+    window.location.href = "/index.html";
+})
+
+/* -----------     Filter database -------------- */
+export const filtrado = (_tag) => { /*  Filter showed cards */
+    /* window.location.href = "/index.html"; */
+    containerCards.innerHTML = ``;
+    if (_tag == 'men') {
+        loaderCards(API_URL + "?type=" + 'male');
+        console.log("MALE");
+    } else if (_tag == 'women') {
+        loaderCards(API_URL + "?type=" + 'female');
+        console.log("MALE");
+    } else {
+        loaderCards(API_URL);
+    }
+}
+window.filtrado = filtrado; /* Adding this function to GLOBAL SCOPE */
+
+/* ----  CALL FUNCTIONS at the beginning */
+notificationCart()
+addToListCart(); /* Call the function for show cart list items on start */
 loaderCards(API_URL); /* Call the function */
 
 
