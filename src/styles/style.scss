@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
-@import "/node_modules/bootstrap/scss/bootstrap.scss";
 
 * {
     margin: 0;
@@ -184,23 +183,23 @@ li i {
 }
 
 .btn-add {
-    transition: 300ms;
-    background-color: var(--Orange);
-    border: var(--Orange);
+    transition: 300ms!important;
+    background-color: var(--Orange)!important;
+    border: var(--Orange)!important;
 }
 
 .btn-add:hover {
-    color: var(--Orange);
-    background-color: var(--PaleOrange);
+    color: var(--Orange)!important;
+    background-color: var(--PaleOrange)!important;
 }
 
 .button-checkout {
-    margin: 1rem;
-    width: 90%;
-    color: white;
-    transition: 300ms;
-    background-color: var(--Orange);
-    border: var(--Orange);
+    margin: 1rem!important;
+    width: 90%!important;
+    color: white!important;
+    transition: 300ms!important;
+    background-color: var(--Orange)!important;
+    border: var(--Orange)!important;
 }
 
 .button-checkout:hover {
@@ -214,7 +213,6 @@ li i {
     right: 0;
     float: right;
 }
-
 
 @media screen and (max-width: 650px) {
     .container-cards {
@@ -244,3 +242,5 @@ li i {
         width: 100vw;
     }
 }
+
+@import "/node_modules/bootstrap/scss/bootstrap.scss";

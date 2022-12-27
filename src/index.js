@@ -188,17 +188,14 @@ const eraseCartItem = (id) => {
 window.eraseCartItem = eraseCartItem;
 
 function subToCart(_object) {
-    console.log("Empece");
     let res = localStorage.getItem('cart')
     cart = JSON.parse(res)
-    let flag = false;
     /* RECORRO CART BUSCANDO ID */
     cart.forEach((product) => {
         if (product.id === _object.id) {
             if (product.cantidadComprar > 1) {
                 product.cantidadComprar--;
             } else if(product.cantidadComprar == 1){
-                console.log("Hay que borrarlo");
                 cart = (eraseCartItem(product.id))
             }
         }

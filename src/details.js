@@ -58,7 +58,7 @@ const mostrarDetalles = () => {
   alt="">
   `
 
-  const main_img = document.querySelector('.main_img')
+const main_img = document.querySelector('.main_img')
 const thumbnails = document.querySelectorAll('.thumbnail')
 
 
