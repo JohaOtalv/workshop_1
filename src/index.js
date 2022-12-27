@@ -91,7 +91,8 @@ const showCartOnModal = () => { /* Load Cart Items on modal */
 
                 const buttonSub = document.getElementById('btnSub' + e.id)
                 buttonSub.addEventListener('click', () => {
-                    console.log("HOLIIII");
+                    console.log("Me ejectuo restar");
+                    subToCart(e);
                 })
             });
         }
@@ -125,7 +126,7 @@ cartBtn.addEventListener("click", () => {
 /* --------------------------------------------------- */
 
 /*  on click add -> LocalStorage the items */
-const addToCart = (_object) => { /* VA A DEJAR DE FUNCIONAR */
+const addToCart = (_object) => {
     let res = localStorage.getItem('cart')
 
     if (res == undefined || res == null) {/* NO ENCONTRO CART EN LS */
@@ -156,8 +157,8 @@ const addToCart = (_object) => { /* VA A DEJAR DE FUNCIONAR */
 
     /* CALL FUNCTIONS */
     showCartOnModal();
-    /*   notificationCart();
-      numAdd(); */
+    notificationCart();
+
 }
 window.addToCart = addToCart;
 /* ---------------   Add an Remove from Cart with LocalStorage --------- */
@@ -178,23 +179,40 @@ const eraseCartItem = (id) => {
         let filterCart = cart.filter((element) => {
             return element.id != id
         })
-        console.log(filterCart)
 
         let cartJSON = JSON.stringify(filterCart)
         localStorage.setItem("cart", cartJSON)
         notificationCart()
     }
     showCartOnModal();
+    return filterCart;
 }
 window.eraseCartItem = eraseCartItem;
 
-function numSub(_price, _id) {
-    if (numArr[_id - 1] > 0) {
-        numArr[_id - 1] = numArr[_id - 1] - 1
-        document.querySelector(`.idNum${_id}`).value = numArr[_id - 1]
-    }
+function subToCart(_object) {
+    console.log("Empece");
+    let res = localStorage.getItem('cart')
+    cart = JSON.parse(res)
+    let flag = false;
+    /* RECORRO CART BUSCANDO ID */
+    cart.forEach((product) => {
+        if (product.id === _object.id) {
+            if (product.cantidadComprar > 1) {
+                product.cantidadComprar--;
+            } else if(product.cantidadComprar == 1){
+                console.log("Hay que borrarlo");
+                cart = (eraseCartItem(product.id))
+            }
+        }
+    })
+
+    let cartJson = JSON.stringify(cart)
+    localStorage.setItem('cart', cartJson);
+
+    /* CALL FUNCTIONS */
+    showCartOnModal();
 }
-window.numSub = numSub; /* Adding this function to global scope */
+window.subToCart = subToCart; /* Adding this function to global scope */
 
 /* -------------  Notification pop up ------------ */
 const notificationCart = () => {
