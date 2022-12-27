@@ -11,7 +11,7 @@ logo.addEventListener("click", event => {
 
 const redirect = (tag) => {
   window.location.href = "/index.html";
-  setTimeout( filtrado(tag),2000)
+  setTimeout(filtrado(tag), 2000)
 }
 window.redirect = redirect; /* Adding this function to GLOBAL SCOPE */
 
@@ -38,38 +38,45 @@ const mostrarDetalles = () => {
   divImage.setAttribute("class", "media");
   divImage.innerHTML = `
               <div class="container">
-              <div class="img_container">
-                  <img src="${image}" alt="" class="main_img card-img-principal">
-              </div>
+                  <div class="img_container">
+                   <img class="main_img card-img-principal" data-bs-toggle="modal" data-bs-target="#staticBackdrop" src="${image}" alt="" >
+                  </div>
       
-              <div class="thumbnail_container">
-                  <img class="thumbnail card-img active" src="${image}" alt="">
-                  <img class="thumbnail card-img" src="${image}" alt="">
-                  <img class="thumbnail card-img" src="${image}" alt="">
-                  <img class="thumbnail card-img" src="https://sevensevencolombia.vteximg.com.br/arquivos/ids/970419-524-707/Boxers-para-hombre-45000325-777_1.jpg?v=638068231202330000" alt="">
+                  <div class="thumbnail_container">
+                   <img class="thumbnail card-img  active" src="${image}" alt="">
+                   <img class="thumbnail card-img" src="${image}" alt="">
+                   <img class="thumbnail card-img" src="${image}" alt="">
+                   <img class="thumbnail card-img" src="https://sevensevencolombia.vteximg.com.br/arquivos/ids/970419-524-707/Boxers-para-hombre-45000325-777_1.jpg?v=638068231202330000" alt="">
+                  </div>
               </div>
-          </div>
         `;
   contenedorImagen.appendChild(divImage);
 
   const modal = document.querySelector(".modal-body");
-  modal.innerHTML = `
-  <img class="img-modal" src="${image}"
-  alt="">
-  `
-
-const main_img = document.querySelector('.main_img')
-const thumbnails = document.querySelectorAll('.thumbnail')
-
-
-thumbnails.forEach(thumb => {
-    thumb.addEventListener('click', function(){
-        const active = document.querySelector('.active')
-        active.classList.remove('active')
-        thumb.classList.add('active')
-        main_img.src = thumb.src
+  const main_img = document.querySelector('.main_img')
+  const thumbnails = document.querySelectorAll('.thumbnail')
+  /* ---------- INNER EN LA PRIMERA IMAGEN PRINCIPAL RENDERIZADA */
+    modal.innerHTML = `
+      <img class="img-modal" src="${main_img.src}"
+      alt="">
+    `
+/* -------------  FUNCION QUE CAMBIA LAS MINIATURAS CUANDO SON SELECCIONADAS POR PRINCIPAL ----- */
+  thumbnails.forEach(thumb => {
+    thumb.addEventListener('click', function () {
+      const active = document.querySelector('.active')
+      active.classList.remove('active')
+      thumb.classList.add('active')
+      main_img.src = thumb.src
+      /* --------- INNER CUANDO UNA IMAGEN ES CAMBIADA ------------- */
+      modal.innerHTML = `
+        <img class="img-modal" src="${main_img.src}"
+        alt="">
+        `
     })
-})
+  })
+
+
+
 }
 mostrarDetalles(); /* Call the function */
 
