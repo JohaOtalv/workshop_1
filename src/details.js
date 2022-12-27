@@ -37,15 +37,18 @@ const mostrarDetalles = () => {
   const divImage = document.createElement("div");
   divImage.setAttribute("class", "media");
   divImage.innerHTML = `
-              <section>
-                <img class="card-img-principal" data-bs-toggle="modal" data-bs-target="#staticBackdrop"" src="${image}">
-              </section>
-              <section>
-              <img class="card-img" src="${image}">
-              <img class="card-img" src="${image}">
-              <img class="card-img" src="${image}">
-              <img class="card-img" src="${image}">
-              </section>
+              <div class="container">
+              <div class="img_container">
+                  <img src="${image}" alt="" class="main_img card-img-principal">
+              </div>
+      
+              <div class="thumbnail_container">
+                  <img class="thumbnail card-img active" src="${image}" alt="">
+                  <img class="thumbnail card-img" src="${image}" alt="">
+                  <img class="thumbnail card-img" src="${image}" alt="">
+                  <img class="thumbnail card-img" src="https://sevensevencolombia.vteximg.com.br/arquivos/ids/970419-524-707/Boxers-para-hombre-45000325-777_1.jpg?v=638068231202330000" alt="">
+              </div>
+          </div>
         `;
   contenedorImagen.appendChild(divImage);
 
@@ -54,6 +57,19 @@ const mostrarDetalles = () => {
   <img class="img-modal" src="${image}"
   alt="">
   `
+
+  const main_img = document.querySelector('.main_img')
+const thumbnails = document.querySelectorAll('.thumbnail')
+
+
+thumbnails.forEach(thumb => {
+    thumb.addEventListener('click', function(){
+        const active = document.querySelector('.active')
+        active.classList.remove('active')
+        thumb.classList.add('active')
+        main_img.src = thumb.src
+    })
+})
 }
 mostrarDetalles(); /* Call the function */
 

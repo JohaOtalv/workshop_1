@@ -163,8 +163,6 @@ const addToCart = (_object) => {
 window.addToCart = addToCart;
 /* ---------------   Add an Remove from Cart with LocalStorage --------- */
 
-
-
 const eraseCartItem = (id) => {
     let localData = localStorage.getItem("cart")
     cart = JSON.parse(localData) // Parseo para tenerlo listo en los if's inferiores
