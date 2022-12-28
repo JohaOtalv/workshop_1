@@ -1,0 +1,26 @@
+@import "/node_modules/bootstrap/scss/bootstrap.scss";
+.card-img-principal {
+    width: 20rem;
+}
+
+.card-img {
+    width: 8rem;
+}
+
+.container-info {
+    padding-top: 3rem;
+}
+
+.container-details {
+    padding: 4rem;
+    gap: 49px;
+}
+
+.img-modal {
+    width: 100%;
+}
+
+.active {
+    opacity:  1 !important;
+    box-shadow: 0 5px 5px rgba(1, 23, 46, 0.6);
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/1a58ad0bca.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="logo"><img src="https://www.elingenio.es/wp-content/uploads/2022/05/Intimissimi_logo.png"
+                    height="42px"></a>
+            <div class="navbar-collapse" id="navbarSupp ortedContent">
+
+                <ul id="nav-ul" class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="button-nav" onclick="filtrado('default')">Collections</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="button-nav" onclick="filtrado('men')">Men</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="button-nav" onclick="filtrado('women')">Women</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="button-nav">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="button-nav">Contact</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <!-- tarjeta -->
+                        <div class="drop">
+                            <a id="cart-button" class="btn position-relative efecto" type="button">
+                                <i class="fa-solid fa-cart-shopping"></i><span
+                                    class="notification position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    0</span>
+                            </a>
+                            <div class="cart-section efecto">
+                                <p class="cart-title fs-3"><b>Cart</b></p>
+                                <div class="container efecto">
+                                    <div class="container-list efecto">
+                                        <!-- INNER HTML -->
+                                    </div>
+                                    <button class="btn button-checkout fs-4">Checkout</button>
+                                </div>
+                            </div>
+                    </li>
+                </ul>
+            </div>
+            <ul class="navbar me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <img class="img-avatar"
+                        src="https://github.com/JohaOtalv/workshop_1/blob/main/src/img/image-avatar.png?raw=true"
+                        alt="Profile picture">
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <!-- inicio de cartas -->
+    <section class="container-cards">
+
+    </section>
+
+    <!-- TOAST de Boostrap -->
+    <div id="show-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="..." class="rounded mr-2" alt="...">
+            <strong class="mr-auto">Successful process</strong>
+            <small class="text-muted">Just now</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+
+</body>
+
+</html>
