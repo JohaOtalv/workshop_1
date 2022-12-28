@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/JohaOtalv/workshop_1/issues"
   },
-  "homepage": "https://JohaOtalv.github.io/workshop_1",
+  "homepage": "https://JohaOtalv.github.io/workshop_1/",
   "devDependencies": {
     "@babel/core": "^7.20.5",
     "@babel/preset-env": "^7.20.2",

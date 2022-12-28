@@ -1,6 +1,6 @@
 import './styles/style.scss';
 import * as bootstrap from 'bootstrap';
-const API_URL = 'http://localhost:3000/Products'; /* JSON SERVER API */
+const API_URL = 'https://my-json-server.typicode.com/moralesvictorr/jsonserverSprint1/Products'; /* JSON SERVER API */
 let containerCards = document.querySelector('.container-cards');
 let cart;
 /* ----------------- FUNCTIONS  ---------------------*/
